@@ -1,0 +1,17 @@
+{
+  "name": "nodepinger",
+  "version": "1.0.0",
+  "description": "Pings server",
+  "main": "ping.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mysql": "github:mysqljs/mysql",
+    "net-ping": "^1.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
