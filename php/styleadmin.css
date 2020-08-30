@@ -1,0 +1,90 @@
+.updateSuccess{
+
+    text-align: center;
+    margin-top: 250px;
+    font-size: xx-large;
+    background-color: #bef0f5;
+    line-height: 3;
+}
+
+
+body {
+    background-color: #e6ecf0;
+    /*  width: 50%;
+         margin: auto;*/
+    margin: 30px;
+}
+
+.boothsWrapper{
+    text-align: -webkit-center;
+}
+
+.important {
+    color: red;
+}
+
+.boothNumber{
+    color: red;
+}
+
+input {
+    font-size: 25px;
+    padding-left: 5px;
+    max-width: 80px;
+    font-weight: bold;
+    color: brown;
+}
+
+input[type=radio] {
+    border: 0;
+    width: 8%;
+    height: 1em;
+}
+
+.singleBooth {
+    text-align: initial;
+    transition: box-shadow .1s;
+    background-color: #ddd;
+    font-size: 30px;
+    padding: 20px;
+    border: 1px grey solid;
+    /*border-radius: 10px;*/
+    line-height: 1.5;
+    margin-top: 30px;
+    font-weight: bold;
+    max-width: 550px;
+}
+
+.singleBooth:hover {
+    /*box-shadow: 10px 10px 7px 2px rgba(138,138,138,1);*/
+    box-shadow: 5px 5px 11px rgba(33,33,33,.2);
+}
+
+.submitButton {
+    font-size: 25px;
+    font-weight: bold;
+    color: blue;
+    margin-left: 35%;
+    margin-top: 20px;
+    max-width: 100px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.boothLiveDate {
+    font-size: 23px;
+}
