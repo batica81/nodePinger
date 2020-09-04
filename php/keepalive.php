@@ -1,6 +1,6 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin:' . $_SERVER['HTTP_ORIGIN']);
 header("Access-Control-Allow-Credentials: true");
 header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 header('Access-Control-Max-Age: 1000');
@@ -20,6 +20,8 @@ $charset = DB_CHARSET;
 $db = DB_NAME;
 $user = DB_USER;
 $pass = DB_PASSWORD;
+
+$allowedClients = ['torrente'];
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
@@ -47,4 +49,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     }
 
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+    if( isset($_GET['clientname']) && in_array($_GET['clientname'], $allowedClients )) {
+
+        $client_ip = $_GET['clientname'];
+        $stmt = $pdo->prepare("select * from liveclient where client_ip = ?;");
+        $stmt->execute([$client_ip]);
+        $allData = $stmt->fetchAll();
+
+        $jsonstring = json_encode($allData);
+        echo $jsonstring;
+
+    } else {
+        echo "Go away!";
+        die();
+    }
 }
