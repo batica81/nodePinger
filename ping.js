@@ -4,22 +4,24 @@ var mysql = require('mysql');
 
 var session = ping.createSession ();
 
-var target = "192.168.1.3";
 var interval = 30;
+var targets = ["192.168.1.3", "192.168.1.1", "192.168.1.30"];
+
 
 setInterval(function (){
-    session.pingHost (target, function (error, target, sent, rcvd) {
-        var rtt = rcvd - sent;
-        if (error) {
-            sendToDB(target, 0);
-            console.log (target + ": " + error.toString ());
-        } else {
-            sendToDB(target, 1, rtt);
-            console.log (target + ": Alive (ms=" + rtt + ")");
-            console.log ("Sent at: " + sent);
-        }
-    });
-
+    for (var i = 0; i < targets.length; i++) {
+        session.pingHost(targets[i], function (error, target, sent, rcvd) {
+            var rtt = rcvd - sent;
+            if (error) {
+                sendToDB(target, 0);
+                console.log(target + ": " + error.toString());
+            } else {
+                sendToDB(target, 1, rtt);
+                console.log(target + ": Alive (ms=" + rtt + ")");
+                console.log("Sent at: " + sent);
+            }
+        });
+    }
 }, interval * 1000);
 
 function sendToDB(ip, status, rtt) {
